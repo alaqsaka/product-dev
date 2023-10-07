@@ -9,7 +9,7 @@ export default function handler(
   res: NextApiResponse<ResponseData>
 ) {
   try {
-    res.redirect(307, `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&scope=user&login`);
+    return res.redirect(307, `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}&scope=user&login`);
   } catch (error) {
 
   }
