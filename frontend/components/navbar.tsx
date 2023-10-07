@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './button'
+import Link from 'next/link'
 
 const Navbar = () => {
   return (
@@ -7,9 +8,12 @@ const Navbar = () => {
       <div className='text-lg font-bold'>
         Simple<span style={{ color: '#DD2590' }}>.</span>Repo
       </div>
-      <Button variant='primary'>
-        Login with Github
-      </Button>
+
+      <Link href={'http://localhost:3000/api/github/auth'}>
+        <Button variant='primary'>
+          Login with Github
+        </Button>
+      </Link>
     </div>
   )
 }

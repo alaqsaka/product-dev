@@ -1,14 +1,35 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+
+
+const Home: NextPage = (props) => {
+  console.log('home props ', props)
+
   return (
    <div>
     Octocat Homepage
    </div>
   );
 };
+
+export async function getServerSideProps(context: any) {
+  const {code} = context.query;
+
+  if (code) {
+    let res = await fetch(`http://localhost:3000/api/github/access_token?code=${code}`);
+    let token = await res.json();
+    return {
+      props: {
+        data: {
+          ...token
+        }
+      }
+    }
+  }
+
+  return {
+    props: { message: `Next.js is awesome`, code: code ? code : null },
+  }
+}
 
 export default Home;
