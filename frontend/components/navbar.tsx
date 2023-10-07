@@ -9,7 +9,7 @@ const Navbar = () => {
         Simple<span style={{ color: '#DD2590' }}>.</span>Repo
       </div>
 
-      <Link href={`${process.env.API_URL}/api/github/auth`}>
+      <Link href={`/api/github/auth`}>
         <Button variant='primary'>
           Login with Github
         </Button>
