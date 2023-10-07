@@ -16,7 +16,7 @@ export async function getServerSideProps(context: any) {
   const {code} = context.query;
 
   if (code) {
-    let res = await fetch(`http://localhost:3000/api/github/access_token?code=${code}`);
+    let res = await fetch(`http://${process.env.API_URL}/api/github/access_token?code=${code}`);
     let token = await res.json();
     return {
       props: {
