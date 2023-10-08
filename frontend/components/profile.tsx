@@ -47,7 +47,7 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
         {profileData == null && error ? <p>Profile Error</p> :
           (
             <div className='items-center flex flex-col'>
-              <div>
+              <div className='flex justify-center flex-col items-center'>
               <Image className='rounded-full' src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
 
               <div className='text-center mt-2'>
