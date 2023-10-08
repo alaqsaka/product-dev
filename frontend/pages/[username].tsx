@@ -10,7 +10,7 @@ import Profile from '@/components/profile';
 const Home: NextPage = (props) => {
   const [data, setData] = useState('');
   const router = useRouter();
-  const username = router.query.username;
+  const username = router.query.username as string;
   const searchParams = useSearchParams()
   const code = searchParams.get('code');
   console.log(code);
