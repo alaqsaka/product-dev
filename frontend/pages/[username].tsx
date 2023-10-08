@@ -41,7 +41,7 @@ const Home: NextPage = (props) => {
    <div className='lg:px-[112px] lg:py-[24px] bg-white lg:bg-slate-100 min-h-screen'>
    {data ? (
     <>
-     <div className='lg:grid grid-cols-12 gap-14'>
+     <div className='lg:grid grid-cols-12 gap-x-8'>
       <div className='col-span-2 px-4 py-6 lg:px-0 lg:py-0'>
         <Profile token={data} username={username}/>
       </div>
