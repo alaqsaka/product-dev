@@ -42,54 +42,54 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
 
   return (
   <>
-    {loading ? <p>Loading...</p> :
+    {loading ? <p className='font-bold'>Loading...</p> :
      (
       <>
-        {!profileData ? <p>Profile Error</p> :
+        {profileData == null ? <p>Profile Error</p> :
           (
             <div className='items-center flex flex-col'>
-      <div>
-      <Image src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
+              <div>
+              <Image src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
 
-      <div className='text-center mt-2'>
-        <p className='font-bold md:text-[24px]' style={{ color: '#101828' }}>{profileData?.name}</p>
-        <p className='md:text-base' style={{ color: '#344054' }}>@{profileData?.login}</p>
-      </div>
-      </div>
+              <div className='text-center mt-2'>
+                <p className='font-bold md:text-[24px]' style={{ color: '#101828' }}>{profileData?.name}</p>
+                <p className='md:text-base' style={{ color: '#344054' }}>@{profileData?.login}</p>
+              </div>
+              </div>
 
-      <div className='mt-6 w-full'>
-        <p style={{ color: '#101828' }} className='text-left font-bold text-sm'>About</p>
-        <p className='text-base font-normal mt-2' style={{ color: '#101828' }}>
-         {profileData?.bio}
-        </p>
+              <div className='mt-6 w-full'>
+                <p style={{ color: '#101828' }} className='text-left font-bold text-sm'>About</p>
+                <p className='text-base font-normal mt-2' style={{ color: '#101828' }}>
+                {profileData?.bio}
+                </p>
 
-        <div className='flex gap-1 mt-2'>
-          <p>
-            <span className='font-bold mr-1'>{profileData?.followers}</span>Followers
-          </p>
-          <p>
-            <span className='font-bold mr-1'>{profileData?.following}</span>Following
-          </p>
-        </div>
+                <div className='flex gap-1 mt-2'>
+                  <p>
+                    <span className='font-bold mr-1'>{profileData?.followers}</span>Followers
+                  </p>
+                  <p>
+                    <span className='font-bold mr-1'>{profileData?.following}</span>Following
+                  </p>
+                </div>
 
-        <div className='mt-4'>
-          <p className='text-base font-normal' style={{ color: '#344054' }}>{profileData?.email}</p>
-          <p className='text-base font-normal' style={{ color: '#344054' }}>
-            <span style={{ color: '#1D2939' }} className='font-bold text-base'>821.320 </span>
-            profile visitor
-          </p>
-        </div>
+                <div className='mt-4'>
+                  <p className='text-base font-normal' style={{ color: '#344054' }}>{profileData?.email}</p>
+                  <p className='text-base font-normal' style={{ color: '#344054' }}>
+                    <span style={{ color: '#1D2939' }} className='font-bold text-base'>821.320 </span>
+                    profile visitor
+                  </p>
+                </div>
 
-        <div className='mt-10'>
-          <p style={{ color: '#101828' }} className='text-left font-bold text-sm'>Latest Visitor</p>
-          <div className='mt-2 flex gap-4 flex-wrap'>
-            <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
-            <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
-            <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
-          </div>
-        </div>
-      </div>
-      </div>
+                <div className='mt-10'>
+                  <p style={{ color: '#101828' }} className='text-left font-bold text-sm'>Latest Visitor</p>
+                  <div className='mt-2 flex gap-4 flex-wrap'>
+                    <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
+                    <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
+                    <Image src={'/image 4.png'} height={56} width={56} alt='Visitors' className='rounded-full'/>
+                  </div>
+                </div>
+              </div>
+            </div>
           )
         }
       </>
