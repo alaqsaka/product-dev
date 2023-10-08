@@ -1,11 +1,13 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import {redirect, useSearchParams} from 'next/navigation';
 import RepoCard from '@/components/RepoCard';
 import Profile from '@/components/profile';
 
 const Home: NextPage = (props) => {
   const [data, setData] = useState('');
+  const router = useRouter()
   const searchParams = useSearchParams()
   const code = searchParams.get('code');
 
@@ -25,7 +27,7 @@ const Home: NextPage = (props) => {
           const result = await response.json()
           setData(result.access_token);
           localStorage.setItem('token', result.access_token);
-          redirect('/octocat');
+          router.replace('/octocat');
         }
 
         fetchData().catch((e) => {
