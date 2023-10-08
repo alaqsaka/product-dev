@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from './navbar'
+import Footer from './footer';
 
 const Layout = ({children}: {children: React.ReactNode}) => {
   const [token, setToken] = useState('');
@@ -18,6 +19,7 @@ const Layout = ({children}: {children: React.ReactNode}) => {
     <>
     <Navbar token={token}/>
     <main>{children}</main>
+    <Footer />
   </>
   )
 }

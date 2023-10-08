@@ -38,7 +38,7 @@ const Home: NextPage = (props) => {
   }, [code]);
 
   return (
-   <div className='lg:px-[112px] lg:py-[24px] bg-white lg:bg-slate-100 min-h-screen'>
+   <div className='lg:px-[112px] lg:py-[24px] bg-white lg:bg-[#FCFCFD] min-h-screen'>
    {data ? (
     <>
      <div className='lg:grid grid-cols-12 gap-x-8'>
