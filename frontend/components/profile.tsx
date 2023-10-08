@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const Profile = ({token}: {token: string}) => {
   console.log('profile token', token);
-  const [profileData, setProfileData] = useState(null)
+  const [profileData, setProfileData] = useState<any>(null)
 
   useEffect(() => {
     const  fetchProfileData = async () => {
