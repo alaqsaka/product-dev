@@ -8,7 +8,6 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
   const [profileData, setProfileData] = useState<any>(null);
 
   useEffect(() => {
-
     const fetchProfileData = async () => {
       const response = await fetch(`https://api.github.com/users/${username}`, {
         headers: {
@@ -45,7 +44,7 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
     {loading ? <p className='font-bold'>Loading...</p> :
      (
       <>
-        {profileData == null ? <p>Profile Error</p> :
+        {profileData == null && error ? <p>Profile Error</p> :
           (
             <div className='items-center flex flex-col'>
               <div>

@@ -44,14 +44,8 @@ const Home: NextPage = (props) => {
         <Profile token={data} username='octocat'/>
       </div>
       <div className='col-span-10 bg-white border p-[24px] lg:p-[24px]' style={{ borderColor: '#F2F4F7' }}>
-        <div className='flex items-center'>
-          <p className='text-[24px] font-bold mr-3'>Repository</p>
-          <div className='px-3 py-1 rounded-full' style={{ backgroundColor: '#F8F9FC' }}>
-            <p className='text-sm font-medium' style={{  color: '#363F72' }}>6</p>
-          </div>
-        </div>
-        <div className='mt-6'>
-          <RepoCard/>
+        <div>
+          <RepoCard token={data} username='octocat'/>
         </div>
       </div>
     </div>
@@ -61,25 +55,5 @@ const Home: NextPage = (props) => {
    </div>
   );
 };
-
-// export async function getServerSideProps(context: any) {
-//   const {code} = context.query;
-
-//   if (code) {
-//     let res = await fetch(`${process.env.API_URL}/api/github/access_token?code=${code}`);
-//     let token = await res.json();
-//     return {
-//       props: {
-//         data: {
-//           ...token
-//         }
-//       }
-//     }
-//   }
-
-//   return {
-//     props: { message: `Next.js is awesome`, code: code ? code : null },
-//   }
-// }
 
 export default Home;

@@ -5,8 +5,6 @@ import { useRouter } from 'next/router';
 import RepoCard from '@/components/RepoCard';
 import Profile from '@/components/profile';
 
-
-
 const Home: NextPage = (props) => {
   const [data, setData] = useState('');
   const router = useRouter();
@@ -48,14 +46,8 @@ const Home: NextPage = (props) => {
         <Profile token={data} username={username}/>
       </div>
       <div className='col-span-10 bg-white border p-[24px] lg:p-[24px]' style={{ borderColor: '#F2F4F7' }}>
-        <div className='flex items-center'>
-          <p className='text-[24px] font-bold mr-3'>Repository</p>
-          <div className='px-3 py-1 rounded-full' style={{ backgroundColor: '#F8F9FC' }}>
-            <p className='text-sm font-medium' style={{  color: '#363F72' }}>6</p>
-          </div>
-        </div>
-        <div className='mt-6'>
-          <RepoCard/>
+        <div>
+          <RepoCard token={data} username={username}/>
         </div>
       </div>
     </div>
