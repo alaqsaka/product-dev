@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-const Profile = ({token}: {token: string}) => {
+const Profile = ({token, username}: {token: string, username?: string}) => {
   console.log('profile token', token);
   const [profileData, setProfileData] = useState<any>(null)
 
   useEffect(() => {
+    console.log('username ', username)
     const  fetchProfileData = async () => {
-      const response = await fetch('https://api.github.com/user', {
+      const response = await fetch(`https://api.github.com/users/${username}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -24,7 +25,7 @@ const Profile = ({token}: {token: string}) => {
       // handle the error as needed
       console.error('An error occurred while fetching the data: ', e)
     })
-  }, [token])
+  }, [token, username])
 
 
   return (
