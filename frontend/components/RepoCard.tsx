@@ -52,7 +52,7 @@ const RepoCard = ({token, username}: {token: string, username?: string}) => {
             </div>
           </div>
         </div>
-        {usersRepo?.map((repo: any) => (
+        {usersRepo?.slice(0, 6).map((repo: any) => (
           <div key={repo.id} className='p w-full p-6 border mb-6' style={{ borderColor: '#EAECF0', backgroundColor: '#F9FAFB' }}>
             <div className='flex gap-2'>
               <p className='text-[16px] font-bold' style={{ color: '#101828' }}>{repo?.name}</p>
