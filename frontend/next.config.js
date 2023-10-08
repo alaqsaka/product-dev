@@ -10,6 +10,11 @@ const nextConfig = {
       permanent: true,
       }
     ]
+  },
+  images: {
+    domains: [
+      'avatars.githubusercontent.com'
+    ]
   }
 }
 

@@ -11,13 +11,15 @@ const Home: NextPage = (props) => {
   const searchParams = useSearchParams()
   const code = searchParams.get('code');
   console.log(code);
+  console.log('data home ', data);
 
   useEffect(() => {
     console.log('use effect');
     const token = localStorage.getItem('token');
 
     if (token) {
-      setData('user data');
+      setData(token);
+      console.log('ada token')
     } else {
       if (code){
         console.log('fetching data');
@@ -27,7 +29,7 @@ const Home: NextPage = (props) => {
             throw new Error(`HTTP error! status: ${response.status}`)
           }
           const result = await response.json()
-          setData(result);
+          setData(result.access_token);
           console.log('result ', result);
           localStorage.setItem('token', result.access_token);
           redirect('/octocat');
@@ -43,11 +45,11 @@ const Home: NextPage = (props) => {
 
   return (
    <div className='lg:px-[112px] lg:py-[24px] bg-white lg:bg-slate-100 min-h-screen'>
-    Octocat Homepage
-    <p>{data ? `Your data: ${data}` : 'Loading...'}</p>
-    <div className='lg:grid grid-cols-12 gap-14'>
+   {data ? (
+    <>
+     <div className='lg:grid grid-cols-12 gap-14'>
       <div className='col-span-2 px-4 py-6 lg:px-0 lg:py-0'>
-        <Profile />
+        <Profile token={data}/>
       </div>
       <div className='col-span-10 bg-white border p-[24px] lg:p-[24px]' style={{ borderColor: '#F2F4F7' }}>
         <div className='flex items-center'>
@@ -61,6 +63,9 @@ const Home: NextPage = (props) => {
         </div>
       </div>
     </div>
+    </>
+   ) :
+   <p>You must login first.</p>}
    </div>
   );
 };
