@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react'
 
 const Profile = ({token, username}: {token: string, username?: string}) => {
   console.log('profile token', token);
-  const [profileData, setProfileData] = useState<any>(null)
+  const [loading, setLoading] = useState<boolean>();
+  const [error, setError] = useState(null);
+  const [profileData, setProfileData] = useState<any>(null);
 
   useEffect(() => {
-    console.log('username ', username)
-    const  fetchProfileData = async () => {
+
+    const fetchProfileData = async () => {
       const response = await fetch(`https://api.github.com/users/${username}`, {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -18,18 +20,34 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
       }
       const result = await response.json();
       setProfileData(result);
+
       console.log('Fetch Profile Data ', result);
+      setLoading(false);
     }
 
-    fetchProfileData().catch((e) => {
-      // handle the error as needed
+
+    fetchProfileData()
+    .catch((e) => {
+      console.log('Error ',e);
+      if (profileData==null) {
+        setError(e)
+      }
       console.error('An error occurred while fetching the data: ', e)
+      setLoading(false);
     })
-  }, [token, username])
+    setLoading(true);
+    console.log('loading ',loading);
+  }, [username, token])
 
 
   return (
-    <div className='items-center flex flex-col'>
+  <>
+    {loading ? <p>Loading...</p> :
+     (
+      <>
+        {!profileData ? <p>Profile Error</p> :
+          (
+            <div className='items-center flex flex-col'>
       <div>
       <Image src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
 
@@ -71,7 +89,13 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+          )
+        }
+      </>
+     )
+    }
+  </>
   )
 }
 
