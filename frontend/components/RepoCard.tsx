@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 const RepoCard = ({token, username}: {token: string, username?: string}) => {
-  console.log('profile token', token);
   const [loading, setLoading] = useState<boolean>();
   const [error, setError] = useState(null);
   const [usersRepo, setUsersRepo] = useState<any>(null);
@@ -18,15 +17,12 @@ const RepoCard = ({token, username}: {token: string, username?: string}) => {
       }
       const result = await response.json();
       setUsersRepo(result);
-
-      console.log('Fetch Profile Data ', result);
       setLoading(false);
     }
 
 
     fetchUsersRepo()
     .catch((e) => {
-      console.log('Error ',e);
       if (usersRepo==null) {
         setError(e)
       }
@@ -34,7 +30,6 @@ const RepoCard = ({token, username}: {token: string, username?: string}) => {
       setLoading(false);
     })
     setLoading(true);
-    console.log('loading ',loading);
   }, [username, token])
 
 

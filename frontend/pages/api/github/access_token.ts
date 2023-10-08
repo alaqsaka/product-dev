@@ -4,7 +4,6 @@ export default async function  handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log('ACCESS TOKEN API')
   const {code} = req.query;
   try {
     let data;
@@ -15,12 +14,10 @@ export default async function  handler(
       }
     }).then(async (response) => {
       data = await response.json();
-      console.log(data);
       res.status(200).json(data);
     })
     .catch(()=>{})
 
-    // console.log('data response ', data)
   } catch (error) {
     console.error('[ERROR ACCESS TOKEN API]', error)
   }

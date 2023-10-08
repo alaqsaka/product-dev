@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 const Profile = ({token, username}: {token: string, username?: string}) => {
-  console.log('profile token', token);
   const [loading, setLoading] = useState<boolean>();
   const [error, setError] = useState(null);
   const [profileData, setProfileData] = useState<any>(null);
@@ -19,15 +18,12 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
       }
       const result = await response.json();
       setProfileData(result);
-
-      console.log('Fetch Profile Data ', result);
       setLoading(false);
     }
 
 
     fetchProfileData()
     .catch((e) => {
-      console.log('Error ',e);
       if (profileData==null) {
         setError(e)
       }
@@ -35,7 +31,6 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
       setLoading(false);
     })
     setLoading(true);
-    console.log('loading ',loading);
   }, [username, token])
 
 

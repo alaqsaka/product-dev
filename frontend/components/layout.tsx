@@ -6,7 +6,6 @@ const Layout = ({children}: {children: React.ReactNode}) => {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    console.log('layout ');
     const isTokenExist = localStorage.getItem('token');
 
    if (isTokenExist) {

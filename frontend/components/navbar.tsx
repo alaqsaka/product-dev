@@ -24,28 +24,23 @@ const Navbar = ({token}: {token: string}) => {
       const result = await response.json();
       setProfileData(result);
 
-      console.log('Fetch Profile Data ', result);
       setLoading(false);
     }
 
 
     fetchProfileData()
     .catch((e) => {
-      console.log('Error ',e);
       console.error('An error occurred while fetching the data: ', e)
       setLoading(false);
     })
     setLoading(true);
-    console.log('loading ',loading);
   }, [token]);
 
   const toggleProfileData = () => {
-    console.log('toggle')
     setShowModal(prev => !prev);
   };
 
   const toggleProfileDataMobile = () => {
-    console.log('toggle')
     setShowModalMobile(prev => !prev);
   };
 
