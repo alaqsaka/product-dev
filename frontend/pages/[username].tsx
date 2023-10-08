@@ -13,19 +13,14 @@ const Home: NextPage = (props) => {
   const username = router.query.username as string;
   const searchParams = useSearchParams()
   const code = searchParams.get('code');
-  console.log(code);
-  console.log('data home ', data);
 
   useEffect(() => {
-    console.log('use effect');
     const token = localStorage.getItem('token');
 
     if (token) {
       setData(token);
-      console.log('ada token')
     } else {
       if (code){
-        console.log('fetching data');
         const fetchData = async () => {
           const response = await fetch(`/api/github/access_token?code=${code}`);
           if (!response.ok) {
@@ -33,13 +28,11 @@ const Home: NextPage = (props) => {
           }
           const result = await response.json()
           setData(result.access_token);
-          console.log('result ', result);
           localStorage.setItem('token', result.access_token);
           redirect('/octocat');
         }
 
         fetchData().catch((e) => {
-          // handle the error as needed
           console.error('An error occurred while fetching the data: ', e)
         })
       }
@@ -48,7 +41,6 @@ const Home: NextPage = (props) => {
 
   return (
    <div className='lg:px-[112px] lg:py-[24px] bg-white lg:bg-slate-100 min-h-screen'>
-    {username}
    {data ? (
     <>
      <div className='lg:grid grid-cols-12 gap-14'>
@@ -73,25 +65,5 @@ const Home: NextPage = (props) => {
    </div>
   );
 };
-
-// export async function getServerSideProps(context: any) {
-//   const {code} = context.query;
-
-//   if (code) {
-//     let res = await fetch(`${process.env.API_URL}/api/github/access_token?code=${code}`);
-//     let token = await res.json();
-//     return {
-//       props: {
-//         data: {
-//           ...token
-//         }
-//       }
-//     }
-//   }
-
-//   return {
-//     props: { message: `Next.js is awesome`, code: code ? code : null },
-//   }
-// }
 
 export default Home;

@@ -4,25 +4,19 @@ import {redirect, useSearchParams} from 'next/navigation';
 import RepoCard from '@/components/RepoCard';
 import Profile from '@/components/profile';
 
-
-
 const Home: NextPage = (props) => {
   const [data, setData] = useState('');
   const searchParams = useSearchParams()
   const code = searchParams.get('code');
-  console.log(code);
-  console.log('data home ', data);
 
   useEffect(() => {
-    console.log('use effect');
+
     const token = localStorage.getItem('token');
 
     if (token) {
       setData(token);
-      console.log('ada token')
     } else {
       if (code){
-        console.log('fetching data');
         const fetchData = async () => {
           const response = await fetch(`/api/github/access_token?code=${code}`);
           if (!response.ok) {
@@ -30,13 +24,11 @@ const Home: NextPage = (props) => {
           }
           const result = await response.json()
           setData(result.access_token);
-          console.log('result ', result);
           localStorage.setItem('token', result.access_token);
           redirect('/octocat');
         }
 
         fetchData().catch((e) => {
-          // handle the error as needed
           console.error('An error occurred while fetching the data: ', e)
         })
       }
