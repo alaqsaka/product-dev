@@ -18,7 +18,7 @@ Implement and deploy (to the platform provider of your choice) an application th
   - [x] Full name
   - [x] Email if it's available
   - [x] Numbers of followers and following
-- [ ] Show the first 6 (or less if there're less repositories from such user) repositories of such user
+- [x] Show the first 6 (or less if there're less repositories from such user) repositories of such user
 - [x] The default home page will redirect to `/octocat`
 - [x] Users can login using their github account using Oauth
 - [ ] Show details about profile views:
@@ -39,7 +39,7 @@ These tasks are optional but we would encourage you to give them a try to demons
 
 - [ ] Setup Github Actions workflow file for lint check on PRs to `master`
 - [ ] Setup Github Actions workflow file to deploy on pushes to `master`
-- [ ] Deploy the website and submit the URL to us
+- [x] Deploy the website and submit the URL to us
 
 ## Tips
 
