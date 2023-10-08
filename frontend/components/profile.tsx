@@ -48,7 +48,7 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
           (
             <div className='items-center flex flex-col'>
               <div>
-              <Image src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
+              <Image className='rounded-full' src={profileData?.avatar_url} height={160} width={160} alt='Profile Photo'/>
 
               <div className='text-center mt-2'>
                 <p className='font-bold md:text-[24px]' style={{ color: '#101828' }}>{profileData?.name}</p>
