@@ -79,14 +79,19 @@ const Navbar = ({token}: {token: string}) => {
                 <div onClick={() => {
                   localStorage.removeItem('token');
                   router.reload()
-                }} className='cursor-pointer my-[10px] cursor-pointer px-4' style={{ borderColor: '#F2F4F7' }}>Logout</div>
+                }} className='my-[10px] cursor-pointer px-4' style={{ borderColor: '#F2F4F7' }}>Logout</div>
               </div>
             )}
           </div>
          : (
           <div>
             <div className='lg:hidden'>
-              <Image className='cursor-pointer' onClick={toggleProfileDataMobile} alt='Burger' src={'/burger.svg'} height={20} width={20}/>
+
+              {showModalMobile ? (
+                  <Image className='cursor-pointer' onClick={toggleProfileDataMobile} alt='Burger' src={'/cross.png'} height={30} width={30}/>
+              ) : (
+                <Image className='cursor-pointer' onClick={toggleProfileDataMobile} alt='Burger' src={'/burger.svg'} height={20} width={20}/>
+              )}
             </div>
 
             <Link className='hidden lg:block' href={`/api/github/auth`}>

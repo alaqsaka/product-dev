@@ -72,11 +72,19 @@ const Profile = ({token, username}: {token: string, username?: string}) => {
                 </div>
 
                 <div className='mt-4'>
-                  <p className='text-base font-normal' style={{ color: '#344054' }}>{profileData?.email}</p>
-                  <p className='text-base font-normal' style={{ color: '#344054' }}>
-                    <span style={{ color: '#1D2939' }} className='font-bold text-base'>821.320 </span>
-                    profile visitor
-                  </p>
+                  <div className='flex gap-1'>
+                    <Image src={'/email.png'} alt='Email Icon' height={20} width={20}/>
+                    <p className='text-base font-normal' style={{ color: '#344054' }}>
+                      {profileData?.email}
+                    </p>
+                  </div>
+                  <div className='flex gap-1'>
+                    <Image src={'/people.png'} alt='Email Icon' height={20} width={20}/>
+                    <p className='text-base font-normal' style={{ color: '#344054' }}>
+                      <span style={{ color: '#1D2939' }} className='font-bold text-base'>821.320 </span>
+                      profile visitor
+                    </p>
+                  </div>
                 </div>
 
                 <div className='mt-10'>
